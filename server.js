@@ -13,7 +13,7 @@ var server = http.createServer(
         var path = request.url
         console.log('HTTP 请求路径为：\n' + path)
         // 判断 HTTP 请求路径
-        if(path == '/index') {
+        if(path == '/') {
             response.setHeader('Content-Type', 'text/html; charset=utf-8')
             response.write('<!DOCTYPE>\n' + 
             '<html>\n' + 
@@ -26,7 +26,7 @@ var server = http.createServer(
             response.end()
         } else if(path == '/style.css') {
             response.setHeader('Content-Type', 'text/css; charset=utf-8')
-            response.write('body {background-color: #ddd;} h1 {color: red;}')
+            response.write('h1 {color: red;}')
             response.end()
         } else if(path == '/main.js') {
             response.setHeader('Conten-Type', 'text/javascript; charset=utf-8')
