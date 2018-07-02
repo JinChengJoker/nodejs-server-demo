@@ -1,4 +1,5 @@
 var http = require('http')
+var url = require('url')
 var port = process.argv[2]
 
 // 判断是否传入端口号参数
@@ -10,10 +11,11 @@ if(!port) {
 // 创建服务器
 var server = http.createServer(
     function(request, response) {
-        var path = request.url
+        var temp = url.parse(request.url, true)
+        var path = temp.pathname
         console.log('HTTP 请求路径为：\n' + path)
         // 判断 HTTP 请求路径
-        if(path == '/') {
+        if(path === '/') {
             response.setHeader('Content-Type', 'text/html; charset=utf-8')
             response.write('<!DOCTYPE>\n' + 
             '<html>\n' + 
@@ -24,11 +26,11 @@ var server = http.createServer(
             '</body>\n' +
             '</html>')
             response.end()
-        } else if(path == '/style.css') {
+        } else if(path === '/style.css') {
             response.setHeader('Content-Type', 'text/css; charset=utf-8')
             response.write('h1 {color: red;}')
             response.end()
-        } else if(path == '/main.js') {
+        } else if(path === '/main.js') {
             response.setHeader('Conten-Type', 'text/javascript; charset=utf-8')
             response.write('alert("Hello World!")')
             response.end()
