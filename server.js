@@ -27,11 +27,11 @@ var server = http.createServer(
             '</html>')
             response.end()
         } else if(path === '/style.css') {
-            response.setHeader('Content-Type', 'text/css; charset=utf-8')
+            response.setHeader('Content-Type', 'text/css')
             response.write('h1 {color: red;}')
             response.end()
         } else if(path === '/main.js') {
-            response.setHeader('Conten-Type', 'text/javascript; charset=utf-8')
+            response.setHeader('Content-Type', 'application/javascript')
             response.write('alert("Hello World!")')
             response.end()
         } else {
